@@ -23,7 +23,8 @@ public class CodeBits {
             System.out.println("3.Convert distance to steps");
             System.out.println("4.Convert seconds to minutes and hours");
             System.out.println("5.Select every other character of a String.");
-            System.out.println("6.Exit Program");
+            System.out.println("6.Counting the votes in a 2D array.");
+            System.out.println("7.Exit Program");
             System.out.println("Which selection do you wish? [1-6]:");
 
             menuSelectionOption = input.nextInt();
@@ -45,12 +46,15 @@ public class CodeBits {
                     stringBits(String.valueOf(input));
                     break;
                 case 6:
+                    countVotes();
+                    break;
+                case 7:
                     System.out.println("Thank you for using my program, exiting now, have a good day!");
                     break;
                 default:
                     System.out.println("Please choose a valid option.");
             }
-        } while (menuSelectionOption != 6);
+        } while (menuSelectionOption != 7);
 
 
     }
@@ -106,11 +110,28 @@ public class CodeBits {
         // Note: the loop increments i by 2
         for (int i = 0; i < str.length(); i += 2) {
             // result = result + input.substring(i, i+1);
-        result = result + str.charAt(i);
+            result = result + str.charAt(i);
             // Alternately could use input.charAt(i)
         }
-        System.out.println("Here is the result of this method:: " +result+ ":: This came from the entered word: "+str);
+        System.out.println("Here is the result of this method:: " + result + ":: This came from the entered word: " + str);
         System.out.println("");
+    }
+
+    public static void countVotes() {
+        int[][] votesTable =
+                {{12, 13, 14, 10, 15, 16}, // candidate 0
+                 {5, 2, 6, 8, 4, 3}, // candidate 1
+                 {13, 15, 10, 12, 11, 17}, // candidate 2
+                };
+        for (int row = 0; row < votesTable.length; row++) {
+            int voteCount = 0;
+            for (int column = 0; column < votesTable[row].length; column++) {
+                voteCount += votesTable[row][column];
+            }
+            System.out.println("Candidate " + row + ": "
+                    + voteCount + " votes.");
+        }
+
     }
 }
 
